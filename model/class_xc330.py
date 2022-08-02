@@ -1,3 +1,6 @@
+import sys
+print(sys.path)
+sys.path.append('./model')
 import os, ctypes, time
 import custom_dynamixel_functions as dynamixel
 import numpy as np
@@ -220,8 +223,10 @@ class xc330(object):
             # ADD THINGS TO WRITE
             _is_success = 1
             for _idx, _val in zip(self.IDX_LIST, _VAL_LIST):
-                if ctypes.c_ubyte(dynamixel.groupSyncWriteAddParam(
-                    _groupwrite_num, _idx, _val, _LEN)).value != 1:
+                addparam_result = ctypes.c_ubyte(dynamixel.groupSyncWriteAddParam(_groupwrite_num, _idx, int(_val), _LEN)).value
+                if addparam_result != 1:
+                # if ctypes.c_ubyte(dynamixel.groupSyncWriteAddParam(
+                #     _groupwrite_num, _idx, _val, _LEN)).value != 1:
                     _is_success = 0
                     if self.VERBOSE:
                         print("[SYNCWRITE][ID:%03d] FAILED" % (_idx))
