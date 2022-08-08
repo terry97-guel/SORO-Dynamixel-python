@@ -38,3 +38,6 @@ while not DETECT:
         center_pos = np.array([[cX, cY]])
         if True : 
             cv2.circle(color_image, (cX, cY), 5, (0, 0, 255), -1)
+    cv2.imshow("Frame", color_image)
+    if cv2.waitKey(20) == 27:
+        break   
