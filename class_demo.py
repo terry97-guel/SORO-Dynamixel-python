@@ -20,7 +20,7 @@ from class_vicon_marker import VICON
 from class_vicon_base import ViconBase
 
 class DemoClass(object):
-    def __init__(self):
+    def __init__(self,init_joint):
         rospy.init_node("DEMO")
         self.JOINT_NAMES = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint',
                             'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
@@ -28,6 +28,7 @@ class DemoClass(object):
         self.vicon_marker= VICON()
         self.vicon_base  = ViconBase()
         
+        self.execute_arm(init_joint)
         self.xc          = xc330('SNAPBOT', _USB_NUM=0)
         self.init_xc()
         
@@ -73,17 +74,17 @@ class DemoClass(object):
             raise  
          
     def execute_arm(self, joints):
-            try:
-                self.client = actionlib.SimpleActionClient('follow_joint_trajectory', FollowJointTrajectoryAction)
-                print("Waiting for server...")
-                self.client.wait_for_server()
-                print("Connected to server")
-                """ Initialize """
-                self.move_arm(joints)
-                print("Finish plan")
+        try:
+            self.client = actionlib.SimpleActionClient('follow_joint_trajectory', FollowJointTrajectoryAction)
+            print("Waiting for server...")
+            self.client.wait_for_server()
+            print("Connected to server")
+            """ Initialize """
+            self.move_arm(joints)
+            print("Finish plan")
 
-            except KeyboardInterrupt:
-                rospy.signal_shutdown("KeyboardInterrupt")
-                raise      
-        
+        except KeyboardInterrupt:
+            rospy.signal_shutdown("KeyboardInterrupt")
+            raise      
+    
     
