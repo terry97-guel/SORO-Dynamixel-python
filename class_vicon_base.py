@@ -5,12 +5,12 @@ from geometry_msgs.msg._PoseStamped import PoseStamped
 from geometry_msgs.msg._PoseArray import PoseArray
 
 class ViconBase(object):
-    def __init__(self):
+    def __init__(self,RigidBodyName="Base"):
         self.transform_data = None 
         self.markers = None
         # self.tick = 0
-        self.transform_data_sub = rospy.Subscriber('/optitrack/Base/poseStamped', PoseStamped, self.callback)
-        self.markers_sub = rospy.Subscriber('/optitrack/Base/markerPoseArray', PoseArray, self.callback_marker)
+        self.transform_data_sub = rospy.Subscriber('/optitrack/{}/poseStamped'.format(RigidBodyName), PoseStamped, self.callback)
+        self.markers_sub = rospy.Subscriber('/optitrack/{}/markerPoseArray'.format(RigidBodyName), PoseArray, self.callback_marker)
         # tic_temp = 0
         # while self.tick<2:
         #     time.sleep(1e-3)
