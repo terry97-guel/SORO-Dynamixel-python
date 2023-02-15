@@ -353,11 +353,14 @@ class xc330(object):
                  self.LEN_GOAL_POSITION, GOAL_POS, _NTRY)
         
     def set_goalposcluster(self,GOAL_POS,partition):
-        splitnum = 15
         GOAL_POS = np.array(GOAL_POS)
         GOAL_POS = GOAL_POS.astype(int)
         currpos = self.get_currpos()
-        Temp_Goal = np.linspace(currpos,GOAL_POS,splitnum)
+
+        speed = 5
+        splitnum = np.linalg.norm(GOAL_POS - currpos)/speed
+
+        Temp_Goal = np.linspace(currpos,GOAL_POS,int(splitnum))
         
         for tempgoal in Temp_Goal:
             
@@ -370,7 +373,7 @@ class xc330(object):
                 # print(goal)
                 self.set_goalpos(goal)
                 
-                time.sleep(0.1)
+                # time.sleep(0.001)
     """
         GET GOAL POSITION (0~1023)
     """
