@@ -9,7 +9,7 @@ import time
 from pathlib import Path
 
 
-def homepose_pmove_capture(robot, delta, json_name):
+def homepose_pmove_capture(robot:DemoClass, delta, json_name):
     robot.pmove_xc(np.zeros_like(delta))
     time.sleep(1)
     
