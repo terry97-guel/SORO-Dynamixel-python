@@ -9,8 +9,8 @@ import time
 from pathlib import Path
 
 
-from class_vicon_marker import VICON
-from class_vicon_base import ViconBase
+from class_optitrack_marker import OptiTrack
+from class_optitrack_base import OptiTrackBase
 
 
 rospy.init_node("Test")

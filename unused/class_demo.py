@@ -16,8 +16,8 @@ from control_msgs.msg import *
 from trajectory_msgs.msg import *
 from sensor_msgs.msg import JointState
 
-from class_vicon_marker import VICON
-from class_vicon_base import ViconBase
+from class_optitrack_marker import OptiTrack
+from class_optitrack_base import OptiTrackBase
 
 PROPORTION_MATRIX = np.array(
     [
@@ -50,9 +50,9 @@ class DemoClass(object):
         self.JOINT_NAMES = ['shoulder_pan_joint', 'shoulder_lift_joint', 'elbow_joint',
                             'wrist_1_joint', 'wrist_2_joint', 'wrist_3_joint']
         self.client      = None
-        self.vicon_marker= VICON()
-        self.vicon_reference  = ViconBase('ReferenceFrame')
-        self.vicon_platform = ViconBase('Platform')
+        self.vicon_marker= OptiTrack()
+        self.vicon_reference  = OptiTrackBase('ReferenceFrame')
+        self.vicon_platform = OptiTrackBase('Platform')
         # self.execute_arm(init_joint)
         self.xc          = xc330('SNAPBOT', _USB_NUM=0)
         

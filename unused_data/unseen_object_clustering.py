@@ -2,7 +2,7 @@ import pyrealsense2 as rs
 import cv2
 import apriltag
 import numpy as np
-from class_vicon_marker import VICON
+from class_optitrack_marker import VICON
 import rospy
 
 class UnseenObjectClustering(object):

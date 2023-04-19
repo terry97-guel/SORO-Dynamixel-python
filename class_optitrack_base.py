@@ -4,7 +4,7 @@ import time
 from geometry_msgs.msg._PoseStamped import PoseStamped
 from geometry_msgs.msg._PoseArray import PoseArray
 
-class ViconBase(object):
+class OptiTrackBase(object):
     def __init__(self,RigidBodyName="Base"):
         self.transform_data = None 
         self.markers = None
@@ -32,7 +32,7 @@ class ViconBase(object):
 
 if __name__ == "__main__":
     rospy.init_node("Test")
-    V = ViconBase()
+    V = OptiTrackBase()
     # V.listener()
     time.sleep(0.1)
     # print(V.transform_data)

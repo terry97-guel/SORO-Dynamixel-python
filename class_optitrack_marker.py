@@ -4,7 +4,7 @@ import time
 from geometry_msgs.msg._PoseArray import PoseArray
 # from geometry_msgs.msg.
 
-class VICON(object):
+class OptiTrack(object):
     def __init__(self):
         self.markers = None
         # self.tick = 0
@@ -26,6 +26,6 @@ class VICON(object):
 
 if __name__ == "__main__":
     rospy.init_node("Test")
-    V = VICON()
+    V = OptiTrack()
     rospy.sleep(1)
     print(V.markers)
