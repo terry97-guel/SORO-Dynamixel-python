@@ -371,9 +371,9 @@ class xc330(object):
                 
                 goal[start:end] = tempgoal[start:end]
                 # print(goal)
-                self.set_goalpos(goal)
+                self.set_goalpos([int(i) for i in goal])
                 
-                # time.sleep(0.001)
+                time.sleep(0.001)
     """
         GET GOAL POSITION (0~1023)
     """
